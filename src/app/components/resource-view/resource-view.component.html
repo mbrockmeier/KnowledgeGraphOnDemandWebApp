@@ -1,0 +1,25 @@
+<table border="1">
+    <thead>
+        <th>Property</th>
+        <th>Value</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let groupedProperty of rdfResource?.groupedProperties">
+            <td>
+                {{ groupedProperty.predicate }}
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let object of groupedProperty.objects">
+                        <span *ngIf="object.type == 'uri'">
+                            {{ object.uri }}
+                        </span>
+                        <span *ngIf="object.type == 'literal'">
+                            {{ object.value }}
+                        </span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
