@@ -12,10 +12,27 @@
                 <ul>
                     <li *ngFor="let object of groupedProperty.objects">
                         <span *ngIf="object.type == 'uri'">
-                            {{ object.uri }}
+                            <a [href]="object.uri">{{ object.prefixedUri }}</a>
                         </span>
                         <span *ngIf="object.type == 'literal'">
-                            {{ object.value }}
+                            {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
+                        </span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr *ngFor="let groupedProperty of rdfResource?.incomingArcs">
+            <td>
+                is {{ groupedProperty.predicate }} of
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let object of groupedProperty.objects">
+                        <span *ngIf="object.type == 'uri'">
+                            <a [href]="object.uri">{{ object.prefixedUri }}</a>
+                        </span>
+                        <span *ngIf="object.type == 'literal'">
+                            {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
                         </span>
                     </li>
                 </ul>
