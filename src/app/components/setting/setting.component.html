@@ -1,0 +1,25 @@
+<div class="settings-container">
+    <mat-card class="settings-card">
+        <mat-card-header>
+            <mat-card-title>Settings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="settings-content">
+            <mat-form-field>
+                <mat-label>Backlinks Limit - A high limit may lead to long runtimes for the extraction framework.</mat-label>
+                <input matInput placeholder="50" [formControl]="txtBacklinksCount">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Path to the dump folder of the DBpedia extraction framework</mat-label>
+                <input matInput placeholder="50" [formControl]="txtExtractionFrameworkFolder">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Path to the directory containing the wikidumps</mat-label>
+                <input matInput placeholder="50" [formControl]="txtWikiDumpFolder">
+            </mat-form-field>
+            <div class="actions-row">
+                <a routerLink="/" class="lnk-landing">Back</a>
+                <button mat-raised-button color="primary" (click)="save()">Save</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

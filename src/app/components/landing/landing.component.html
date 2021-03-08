@@ -18,6 +18,7 @@
                 <input matInput placeholder="Wikipedia" [formControl]="txtWiki">
             </mat-form-field>
             <div class="actions-row">
+                <a routerLink="/settings" class="lnk-settings">Settings</a>
                 <button mat-raised-button color="primary" (click)="generateKnowledgeGraph()">Generate...</button>
             </div>
         </mat-card-content>

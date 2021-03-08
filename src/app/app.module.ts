@@ -19,13 +19,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SettingComponent } from './components/setting/setting.component';
+import { WikipediaService } from './services/wikipedia.service';
+import { SettingService } from './services/setting.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceViewComponent,
     LoaderComponent,
-    LandingComponent
+    LandingComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     OverlayModule
   ],
-  providers: [LoaderService, ResourceService,
+  providers: [LoaderService, ResourceService, WikipediaService, SettingService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,
