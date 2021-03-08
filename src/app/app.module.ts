@@ -14,21 +14,31 @@ import { LoaderService } from './services/loader.service';
 import { ResourceService } from './services/resource.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { LoaderInterceptorService } from './services/loader-interceptor.service';
+import { LandingComponent } from './components/landing/landing.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceViewComponent,
-    LoaderComponent
+    LoaderComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatCardModule,
     MatProgressBarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
     OverlayModule
   ],
   providers: [LoaderService, ResourceService,

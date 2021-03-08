@@ -1,0 +1,25 @@
+<div class="landing-container">
+    <mat-card class="landing-card">
+        <mat-card-header>
+            <mat-card-title>Knowledge Graph On Demand</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="landing-content">
+            <mat-form-field>
+                <mat-label>Resource</mat-label>
+                <input matInput placeholder="Ethan Hunt" [formControl]="txtResource" [matAutocomplete]=auto>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let resourceOption of resourceOptions" [value]="resourceOption">
+                        {{ resourceOption }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Queried Wiki</mat-label>
+                <input matInput placeholder="Wikipedia" [formControl]="txtWiki">
+            </mat-form-field>
+            <div class="actions-row">
+                <button mat-raised-button color="primary" (click)="generateKnowledgeGraph()">Generate...</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,23 @@
+.actions-row {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.landing-content {
+    margin: 0 16px;
+}
+
+.landing-card {
+    width: 700px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

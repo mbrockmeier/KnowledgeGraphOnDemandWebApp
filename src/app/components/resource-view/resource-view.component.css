@@ -1,0 +1,10 @@
+.resource-view-container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    overflow: scroll;
+}
+
+.col-predicate {
+    padding-left: 10px;
+}

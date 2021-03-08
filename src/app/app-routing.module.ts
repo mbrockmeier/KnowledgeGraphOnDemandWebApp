@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResourceViewComponent } from './components/resource-view/resource-view.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
         component: ResourceViewComponent
       }
     ]
+  },
+  {
+    path: '',
+    component: LandingComponent
   }
 ];
 

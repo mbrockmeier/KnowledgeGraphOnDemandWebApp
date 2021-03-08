@@ -1,42 +1,51 @@
-<table border="1">
-    <thead>
-        <th>Property</th>
-        <th>Value</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let groupedProperty of rdfResource?.groupedProperties">
-            <td>
-                {{ groupedProperty.predicate }}
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let object of groupedProperty.objects">
-                        <span *ngIf="object.type == 'uri'">
-                            <a [href]="object.uri">{{ object.prefixedUri }}</a>
-                        </span>
-                        <span *ngIf="object.type == 'literal'">
-                            {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
-                        </span>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr *ngFor="let groupedProperty of rdfResource?.incomingArcs">
-            <td>
-                is {{ groupedProperty.predicate }} of
-            </td>
-            <td>
-                <ul>
-                    <li *ngFor="let object of groupedProperty.objects">
-                        <span *ngIf="object.type == 'uri'">
-                            <a [href]="object.uri">{{ object.prefixedUri }}</a>
-                        </span>
-                        <span *ngIf="object.type == 'literal'">
-                            {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
-                        </span>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="resource-view-container">
+    <div>
+        <div class="heading">
+            <h1>About: {{ rdfResource.subject }}</h1>
+        </div>
+        <div class="table-content">
+            <table border="1" *ngIf="rdfResource">
+                <thead>
+                    <th>Property</th>
+                    <th>Value</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let groupedProperty of rdfResource?.groupedProperties">
+                        <td class="col-predicate">
+                            <a [href]="groupedProperty.predicate">{{ groupedProperty.prefixedPredicate }}</a>
+                        </td>
+                        <td class="col-objects">
+                            <ul>
+                                <li *ngFor="let object of groupedProperty.objects">
+                                    <span *ngIf="object.type == 'uri'">
+                                        <a [href]="object.uri">{{ object.prefixedUri }}</a>
+                                    </span>
+                                    <span *ngIf="object.type == 'literal'">
+                                        {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
+                                    </span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let groupedProperty of rdfResource?.incomingArcs">
+                        <td class="col-predicate">
+                            is <a [href]="groupedProperty.predicate">{{ groupedProperty.prefixedPredicate }}</a> of
+                        </td>
+                        <td class="col-objects">
+                            <ul>
+                                <li *ngFor="let object of groupedProperty.objects">
+                                    <span *ngIf="object.type == 'uri'">
+                                        <a [href]="object.uri">{{ object.prefixedUri }}</a>
+                                    </span>
+                                    <span *ngIf="object.type == 'literal'">
+                                        {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
+                                    </span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

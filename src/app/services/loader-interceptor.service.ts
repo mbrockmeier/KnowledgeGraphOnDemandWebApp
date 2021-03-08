@@ -12,6 +12,10 @@ export class LoaderInterceptorService implements HttpInterceptor {
   constructor(private loaderService: LoaderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (req.url.match('.*wikipedia.*')) {
+      return next.handle(req);
+    }
+
     this.showLoader();
     return next.handle(req).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
