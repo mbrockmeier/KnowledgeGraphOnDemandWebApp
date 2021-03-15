@@ -10,6 +10,7 @@ import { SettingService } from 'src/app/services/setting.service';
 })
 export class SettingComponent implements OnInit {
   txtBacklinksCount = new FormControl();
+  txtCacheSize = new FormControl();
   txtExtractionFrameworkFolder = new FormControl();
   txtWikiDumpFolder = new FormControl();
   settings: Settings;
@@ -22,6 +23,7 @@ export class SettingComponent implements OnInit {
       this.txtBacklinksCount.setValue(settings.backlinksCount);
       this.txtExtractionFrameworkFolder.setValue(settings.extractionFrameworkDir);
       this.txtWikiDumpFolder.setValue(settings.extractionFrameworkBaseDir);
+      this.txtCacheSize.setValue(settings.cacheSize);
     });
   }
 
@@ -29,6 +31,7 @@ export class SettingComponent implements OnInit {
     this.settings.backlinksCount = this.txtBacklinksCount.value;
     this.settings.extractionFrameworkDir = this.txtExtractionFrameworkFolder.value;
     this.settings.extractionFrameworkBaseDir = this.txtWikiDumpFolder.value;
+    this.settings.cacheSize = this.txtCacheSize.value;
     this.settingService.updateSettings(this.settings).subscribe(() => {
 
     });

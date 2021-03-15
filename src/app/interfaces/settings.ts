@@ -3,5 +3,6 @@ export interface Settings {
     prefixesFile: string;
     extractionFrameworkBaseDir: string;
     backlinksCount: number;
+    cacheSize: number;
     lang: string;
 }

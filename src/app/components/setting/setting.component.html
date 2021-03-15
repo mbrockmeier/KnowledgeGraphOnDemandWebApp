@@ -9,6 +9,10 @@
                 <input matInput placeholder="50" [formControl]="txtBacklinksCount">
             </mat-form-field>
             <mat-form-field>
+                <mat-label>Cache size - number of models stored in cache. A high cache size leads to higher memory consumption.</mat-label>
+                <input matInput placeholder="10" [formControl]="txtCacheSize">
+            </mat-form-field>
+            <mat-form-field>
                 <mat-label>Path to the dump folder of the DBpedia extraction framework</mat-label>
                 <input matInput placeholder="50" [formControl]="txtExtractionFrameworkFolder">
             </mat-form-field>

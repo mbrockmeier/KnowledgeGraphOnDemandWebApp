@@ -23,7 +23,7 @@ export class SettingService {
     }));
   }
 
-  updateSettings(settings: Settings) {
+  updateSettings(settings: Settings): Observable<any> {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
 
