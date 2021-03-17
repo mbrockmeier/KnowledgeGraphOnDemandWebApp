@@ -29,7 +29,7 @@ import { SettingService } from './services/setting.service';
     ResourceViewComponent,
     LoaderComponent,
     LandingComponent,
-    SettingComponent
+    SettingComponent,
   ],
   imports: [
     BrowserModule,

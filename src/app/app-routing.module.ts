@@ -15,6 +15,15 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'ontology',
+    children: [
+      {
+        path: '**',
+        component: ResourceViewComponent
+      }
+    ]
+  },
+  {
     path: '',
     component: LandingComponent
   },
