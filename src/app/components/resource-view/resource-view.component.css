@@ -41,3 +41,14 @@ margin-right:auto;
 th {
 text-align: center;
 }
+
+#button-panel
+{
+    width:100%;
+    text-align: center;
+}
+.button
+{
+    display: inline-block;
+    margin-right: 50px;
+}

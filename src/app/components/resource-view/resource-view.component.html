@@ -1,5 +1,16 @@
 <div class="resource-view-container">
     <div style="width: 60%; margin: auto">
+        <div id="button-panel">
+            <div class="button">
+                <input type=button onClick="location.href='../'" class="btn btn-primary" value="HOME">
+            </div>
+            <div class="button">
+                <button (click)="downloadRDFXML()" class="btn btn-primary">Download RDF+XML</button>
+            </div>
+            <div class="button">
+                <button (click)="downloadJSON()" class="btn btn-primary">Download JSON</button>
+            </div>
+        </div>
         <div class="heading">
             <h1>About: {{ rdfResource.subject }}</h1>
         </div>

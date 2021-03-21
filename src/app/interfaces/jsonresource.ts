@@ -5,4 +5,5 @@ export interface JSONResource {
     groupedProperties: GroupedPredicate[];
     subject: string;
     extract: string;
+    rdfXML: string;
 }

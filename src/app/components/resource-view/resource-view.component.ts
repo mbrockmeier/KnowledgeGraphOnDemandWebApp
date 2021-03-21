@@ -3,6 +3,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ResourceService } from 'src/app/services/resource.service';
 import { JSONResource } from 'src/app/interfaces/jsonresource';
 
+declare const DownloadJSON: any;
+declare const DownloadRDFXML: any;
+
 @Component({
   selector: 'app-resource-view',
   templateUrl: './resource-view.component.html',
@@ -22,5 +25,13 @@ export class ResourceViewComponent implements OnInit {
     this.resourceService.getResource(this.requestedResource).subscribe(data => {
       this.rdfResource = data;
     });
+  }
+
+  downloadJSON() {
+    DownloadJSON(this.rdfResource, this.requestedResource, "json");
+  }
+
+  downloadRDFXML() {
+    DownloadRDFXML(this.rdfResource, this.requestedResource, "xml");
   }
 }
