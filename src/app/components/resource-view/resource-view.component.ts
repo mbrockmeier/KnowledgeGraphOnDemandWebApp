@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ResourceService } from 'src/app/services/resource.service';
 import { JSONResource } from 'src/app/interfaces/jsonresource';
-
-declare const DownloadJSON: any;
-declare const DownloadRDFXML: any;
+import { DownloadService } from 'src/app/services/download.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-resource-view',
@@ -16,7 +15,8 @@ export class ResourceViewComponent implements OnInit {
   viewingOntology = false;
   rdfResource: JSONResource;
 
-  constructor(private route: ActivatedRoute, private resourceService: ResourceService, private router: Router) {
+  constructor(private route: ActivatedRoute, private resourceService: ResourceService, private router: Router,
+              private downloadService: DownloadService) {
     route.url.subscribe(segments => {
       const currentUrl = this.router.url;
       if (currentUrl.match('.*ontology.*')) {
@@ -63,11 +63,18 @@ export class ResourceViewComponent implements OnInit {
     });
   }
 
-  downloadJSON() {
-    DownloadJSON(this.rdfResource, this.requestedResource, "json");
+  downloadXML(): void {
+    this.downloadService.getResourceXml(this.requestedResource)
+    .subscribe(blob => saveAs(blob, this.requestedResource + '.rdf'));
   }
 
-  downloadRDFXML() {
-    DownloadRDFXML(this.rdfResource, this.requestedResource, "xml");
+  downloadNTriples(): void {
+    this.downloadService.getResourceNTriples(this.requestedResource)
+    .subscribe(blob => saveAs(blob, this.requestedResource + '.nt'));
+  }
+
+  downloadTurtle(): void {
+    this.downloadService.getResourceTurtle(this.requestedResource)
+    .subscribe(blob => saveAs(blob, this.requestedResource + '.ttl'));
   }
 }

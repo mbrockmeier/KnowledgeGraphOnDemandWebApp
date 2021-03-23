@@ -1,21 +1,22 @@
 <div class="resource-view-container">
+    <mat-toolbar class="toolbar" *ngIf="rdfResource">
+        <span>About: {{ rdfResource?.subject }}</span>
+        <span class="button-spacer"></span>
+        <button mat-icon-button routerLink="/"  aria-label="Home">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Download RDF model" [matMenuTriggerFor]="downloadMenu" *ngIf="!viewingOntology">
+            <mat-icon>download</mat-icon>
+        </button>
+        <mat-menu #downloadMenu="matMenu">
+            <button mat-menu-item (click)="downloadNTriples()">N-Triples</button>
+            <button mat-menu-item (click)="downloadTurtle()">Turtle</button>
+            <button mat-menu-item (click)="downloadXML()">XML</button>
+        </mat-menu>
+    </mat-toolbar>
     <div style="width: 60%; margin: auto">
-        <div id="button-panel">
-            <div class="button">
-                <input type=button onClick="location.href='../'" class="btn btn-primary" value="HOME">
-            </div>
-            <div class="button">
-                <button (click)="downloadRDFXML()" class="btn btn-primary">Download RDF+XML</button>
-            </div>
-            <div class="button">
-                <button (click)="downloadJSON()" class="btn btn-primary">Download JSON</button>
-            </div>
-        </div>
-        <div class="heading">
-            <h1>About: {{ rdfResource.subject }}</h1>
-        </div>
-        <div class="extract">
-            <h3>{{ rdfResource.extract }}</h3>
+        <div class="extract" *ngIf="!viewingOntology">
+            <h3>{{ rdfResource.abstract }}</h3>
         </div>
         <div class="table-content">
             <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="rdfResource">

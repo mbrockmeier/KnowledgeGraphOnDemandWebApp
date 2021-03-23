@@ -1,8 +1,18 @@
 .resource-view-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     height: 100%;
     overflow: scroll;
+}
+
+.toolbar {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.button-spacer {
+    flex: 1 1 auto;
 }
 
 .col-predicate {
