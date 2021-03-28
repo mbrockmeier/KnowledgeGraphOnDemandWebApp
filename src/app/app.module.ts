@@ -20,7 +20,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SettingComponent } from './components/setting/setting.component';
 import { WikipediaService } from './services/wikipedia.service';
@@ -48,6 +50,8 @@ import { SettingService } from './services/setting.service';
     MatAutocompleteModule,
     MatToolbarModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatSelectModule,
     MatMenuModule,
     OverlayModule
   ],

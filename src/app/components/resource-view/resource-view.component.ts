@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ResourceService } from 'src/app/services/resource.service';
 import { JSONResource } from 'src/app/interfaces/jsonresource';
 import { DownloadService } from 'src/app/services/download.service';
@@ -14,6 +14,8 @@ export class ResourceViewComponent implements OnInit {
   private requestedResource: string;
   viewingOntology = false;
   rdfResource: JSONResource;
+  refreshModel = false;
+  wikiBaseUrl: string;
 
   constructor(private route: ActivatedRoute, private resourceService: ResourceService, private router: Router,
               private downloadService: DownloadService) {
@@ -24,11 +26,17 @@ export class ResourceViewComponent implements OnInit {
       }
       this.requestedResource = segments[0].path;
     });
+    route.queryParams.subscribe((params: Params) => {
+      this.refreshModel = params.refreshModel;
+      if (params.wikiBaseUrl !== undefined) {
+        this.wikiBaseUrl = params.wikiBaseUrl;
+      }
+    });
   }
 
   ngOnInit(): void {
     if (!this.viewingOntology) {
-      this.resourceService.getResource(this.requestedResource).subscribe(data => {
+      this.resourceService.getResource(this.requestedResource, this.refreshModel, this.wikiBaseUrl).subscribe(data => {
         this.rdfResource = data;
       });
     } else {

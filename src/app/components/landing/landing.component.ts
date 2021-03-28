@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { WikipediaService } from 'src/app/services/wikipedia.service';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-landing',
@@ -9,14 +10,16 @@ import { WikipediaService } from 'src/app/services/wikipedia.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  txtResource = new FormControl();
-  txtWiki = new FormControl('Wikipedia');
+  txtResource = new FormControl('');
+  queriedWiki = new FormControl('Wikipedia');
+  txtCustomWikiUrl = new FormControl('');
+  forceModelRefresh = new FormControl(false);
   resourceOptions = [];
 
   constructor(private router: Router, private wikipediaService: WikipediaService) { }
 
   ngOnInit(): void {
-    this.txtResource.valueChanges.subscribe((value) => {
+    this.txtResource.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
       if (value !== '') {
         this.wikipediaService.getSearchSuggestions(value).subscribe((suggestions) => {
           this.resourceOptions = suggestions;
@@ -29,7 +32,18 @@ export class LandingComponent implements OnInit {
 
   generateKnowledgeGraph(): void {
     const resource = (this.txtResource.value as string).replace(' ', '_');
-    this.router.navigateByUrl('/resource/' + resource);
+    const url = '/resource/' + resource;
+    let wikiBaseUrl;
+
+    if (this.queriedWiki.value !== 'Wikipedia' && this.txtCustomWikiUrl.value !== '') {
+      wikiBaseUrl = this.txtCustomWikiUrl.value;
+    }
+
+    const queryParams = {
+      refreshModel: this.forceModelRefresh.value,
+      wikiBaseUrl
+    };
+    this.router.navigate([url], {queryParams});
   }
 
 }

@@ -5,4 +5,5 @@ export interface Settings {
     backlinksCount: number;
     cacheSize: number;
     lang: string;
+    extractors: string;
 }

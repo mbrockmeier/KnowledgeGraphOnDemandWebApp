@@ -20,6 +20,13 @@
                 <mat-label>Path to the directory containing the wikidumps</mat-label>
                 <input matInput placeholder="50" [formControl]="txtWikiDumpFolder">
             </mat-form-field>
+            <form [formGroup]="extractors">
+                <ul class="extractor-list">
+                    <li *ngFor="let extractor of availableExtractors">
+                        <mat-checkbox [formControlName]="extractor">{{ extractor }}</mat-checkbox>
+                    </li>
+                </ul>
+            </form>
             <div class="actions-row">
                 <a routerLink="/" class="lnk-landing">Back</a>
                 <button mat-raised-button color="primary" (click)="save()">Save</button>
