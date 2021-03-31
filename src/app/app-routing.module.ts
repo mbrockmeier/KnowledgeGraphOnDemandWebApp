@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResourceViewComponent } from './components/resource-view/resource-view.component';
 import { LandingComponent } from './components/landing/landing.component';
+import {SparqlViewComponent} from './components/sparql-view/sparql-view.component'
 
 const routes: Routes = [
   {
@@ -10,6 +11,15 @@ const routes: Routes = [
       {
         path: '**',
         component: ResourceViewComponent
+      }
+    ]
+  },
+  {
+    path: 'sparql',
+    children: [
+      {
+        path: '**',
+        component: SparqlViewComponent
       }
     ]
   },

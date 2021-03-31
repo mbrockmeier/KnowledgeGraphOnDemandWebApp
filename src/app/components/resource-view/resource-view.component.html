@@ -3,6 +3,9 @@
         <div class="heading">
             <h1>About: {{ rdfResource.subject }}</h1>
         </div>
+        <div>
+            <button mat-raised-button color="primary" (click) = "runSparql()">Sparql</button>
+        </div>
         <div class="table-content">
             <table border="1" *ngIf="rdfResource">
                 <thead>

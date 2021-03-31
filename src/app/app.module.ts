@@ -19,13 +19,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SparqlViewComponent } from './components/sparql-view/sparql-view.component';
+import { FormsModule } from '@angular/forms';
+import {SparqlService} from './services/sparql.service'
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceViewComponent,
     LoaderComponent,
-    LandingComponent
+    LandingComponent,
+    SparqlViewComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +43,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
-    OverlayModule
+    OverlayModule,
+    FormsModule
   ],
-  providers: [LoaderService, ResourceService,
+  providers: [LoaderService, ResourceService, SparqlService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,

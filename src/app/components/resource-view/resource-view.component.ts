@@ -12,7 +12,7 @@ export class ResourceViewComponent implements OnInit {
   private requestedResource: string;
   rdfResource: JSONResource;
 
-  constructor(private route: ActivatedRoute, private resourceService: ResourceService) {
+  constructor(private route: ActivatedRoute, private resourceService: ResourceService,private router:Router) {
     route.url.subscribe(segments => {
       this.requestedResource = segments[0].path;
     });
@@ -23,4 +23,10 @@ export class ResourceViewComponent implements OnInit {
       this.rdfResource = data;
     });
   }
+
+  runSparql(): void{
+    alert("you will query: "+this.rdfResource.subject)
+    this.router.navigateByUrl('/sparql/'+this.rdfResource.subject)
+  }
+ 
 }
