@@ -6,3 +6,7 @@
 <textarea [(ngModel)]="txtSparql">default</textarea>
 <button mat-raised-button color="primary" (click)="generateSparql()">Search</button>
 </div>
+
+<br>
+<br>
+<app-sparql-results [sparqlResult]="sparqlResult"></app-sparql-results>

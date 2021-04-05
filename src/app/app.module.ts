@@ -21,7 +21,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SparqlViewComponent } from './components/sparql-view/sparql-view.component';
 import { FormsModule } from '@angular/forms';
-import {SparqlService} from './services/sparql.service'
+import {SparqlService} from './services/sparql.service';
+import { SparqlResultsComponent } from './components/sparql-results/sparql-results.component';
+import {SparqlResultsService} from './services/sparql-results.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {SparqlService} from './services/sparql.service'
     ResourceViewComponent,
     LoaderComponent,
     LandingComponent,
-    SparqlViewComponent
+    SparqlViewComponent,
+    SparqlResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import {SparqlService} from './services/sparql.service'
     OverlayModule,
     FormsModule
   ],
-  providers: [LoaderService, ResourceService, SparqlService,
+  providers: [LoaderService, ResourceService, SparqlService, SparqlResultsService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,

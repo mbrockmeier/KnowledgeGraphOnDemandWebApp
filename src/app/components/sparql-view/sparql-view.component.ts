@@ -10,7 +10,7 @@ import {SparqlResult} from 'src/app/interfaces/sparql'
 })
 export class SparqlViewComponent implements OnInit {
   txtSparql:string;
-  sparqlResult: SparqlResult;
+  public sparqlResult: SparqlResult;
   private requestedResource: string;
 
   constructor(private route: ActivatedRoute, private router: Router,private sparqlService:SparqlService) {
@@ -27,6 +27,5 @@ export class SparqlViewComponent implements OnInit {
     this.sparqlService.getResult(this.requestedResource,this.txtSparql).subscribe(data => {
       this.sparqlResult = data;
     });
-    alert(this.sparqlResult)
   }
 }
