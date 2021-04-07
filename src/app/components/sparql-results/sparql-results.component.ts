@@ -6,7 +6,7 @@ import { Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./sparql-results.component.css']
 })
 export class SparqlResultsComponent implements OnInit {
-  @Input() sparqlResult:any;
+  @Input() sparqlResult: any;
   constructor() { }
 
   ngOnInit(): void {

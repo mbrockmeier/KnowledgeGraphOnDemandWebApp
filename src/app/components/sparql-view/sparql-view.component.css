@@ -1,17 +1,45 @@
-h1{
-    text-align: center;
+.sparql-view-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.toolbar {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.button-spacer {
+    flex: 1 1 auto;
+}
+
+.sparql-card {
+    width: 100%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.query-textview {
+    width: 100%;
 }
 
 textarea{
     text-align: left;
     height: 400px;
-    width: 400px;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-button{
-    display: block;
-    margin: auto;
+.actions-row {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+.sparql-card-content {
+    margin: 10px 16px 25px;
 }

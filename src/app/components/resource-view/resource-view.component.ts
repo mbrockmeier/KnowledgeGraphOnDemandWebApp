@@ -88,6 +88,6 @@ export class ResourceViewComponent implements OnInit {
 
   runSparql(): void {
     alert('you will query: ' + this.rdfResource.subject);
-    this.router.navigateByUrl('/sparql/' + this.rdfResource.subject);
+    this.router.navigateByUrl('/sparql/' + this.requestedResource);
   }
 }

@@ -1,12 +1,30 @@
-<h1>Sparql Query Editor</h1>
-
-<div>
-<br>
-<br>
-<textarea [(ngModel)]="txtSparql">default</textarea>
-<button mat-raised-button color="primary" (click)="generateSparql()">Search</button>
+<mat-toolbar class="toolbar">
+    <span></span>
+    <span class="button-spacer"></span>
+    <button mat-icon-button routerLink="/"  aria-label="Home" matTooltip="Home">
+        <mat-icon>home</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="sparql-view-container">
+    <mat-card class="sparql-card">
+        <mat-card-header>
+            <mat-card-title>Execute SPARQL on: {{ requestedResource }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="sparql-card-content">
+            <mat-form-field class="query-textview">
+                <mat-label>SPARQL Query</mat-label>
+                <textarea matInput [formControl]="txtSparql"></textarea>
+            </mat-form-field>
+            <div class="actions-row">
+                <button mat-raised-button color="primary" (click)="generateSparql()">Execute Query</button>
+            </div>
+        </mat-card-content>
+        <app-sparql-results [sparqlResult]="sparqlResult" *ngIf="sparqlResult"></app-sparql-results>
+    </mat-card>
 </div>
 
-<br>
-<br>
-<app-sparql-results [sparqlResult]="sparqlResult"></app-sparql-results>
+
+
+
+
+

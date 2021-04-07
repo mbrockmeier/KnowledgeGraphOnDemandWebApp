@@ -2,10 +2,13 @@
     <mat-toolbar class="toolbar" *ngIf="rdfResource">
         <span>About: {{ rdfResource?.subject }}</span>
         <span class="button-spacer"></span>
-        <button mat-icon-button routerLink="/"  aria-label="Home">
+        <button mat-icon-button routerLink="/"  aria-label="Home" matTooltip="Home">
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-icon-button aria-label="Download RDF model" [matMenuTriggerFor]="downloadMenu" *ngIf="!viewingOntology">
+        <button mat-icon-button aria-label="Execute SPARQL query" matTooltip="Execute SPARQL query" (click)="runSparql()" *ngIf="!viewingOntology">
+            <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Download RDF model" matTooltip="Download RDF model" [matMenuTriggerFor]="downloadMenu" *ngIf="!viewingOntology">
             <mat-icon>download</mat-icon>
         </button>
         <mat-menu #downloadMenu="matMenu">
@@ -17,9 +20,6 @@
     <div style="width: 60%; margin: auto">
         <div class="extract" *ngIf="!viewingOntology">
             <h3>{{ rdfResource?.abstract }}</h3>
-        </div>
-        <div>
-            <button mat-raised-button color="primary" (click) = "runSparql()">Sparql</button>
         </div>
         <div class="table-content">
             <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="rdfResource">
@@ -53,7 +53,7 @@
                             <ul>
                                 <li *ngFor="let object of groupedProperty.objects">
                                     <span *ngIf="object.type == 'uri'">
-                                        <a [href]="object.uri">{{ object.prefixedUri }}</a>
+                                        <a [routerLink]="" (click)="navigate(object.uri)">{{ object.prefixedUri }}</a>
                                     </span>
                                     <span *ngIf="object.type == 'literal'">
                                         {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>

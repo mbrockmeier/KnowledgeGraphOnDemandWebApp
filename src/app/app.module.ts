@@ -23,15 +23,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SettingComponent } from './components/setting/setting.component';
 import { WikipediaService } from './services/wikipedia.service';
 import { SettingService } from './services/setting.service';
 import { SparqlViewComponent } from './components/sparql-view/sparql-view.component';
-import { FormsModule } from '@angular/forms';
 import { SparqlService } from './services/sparql.service';
 import { SparqlResultsComponent } from './components/sparql-results/sparql-results.component';
-import {SparqlResultsService} from './services/sparql-results.service';
+import { SparqlResultsService } from './services/sparql-results.service';
 
 @NgModule({
   declarations: [
@@ -60,8 +60,8 @@ import {SparqlResultsService} from './services/sparql-results.service';
     MatCheckboxModule,
     MatSelectModule,
     MatMenuModule,
-    OverlayModule,
-    FormsModule
+    MatTooltipModule,
+    OverlayModule
   ],
   providers: [LoaderService, ResourceService, WikipediaService, SettingService, SparqlResultsService,
   {

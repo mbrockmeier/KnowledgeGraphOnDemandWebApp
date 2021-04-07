@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {SparqlService} from 'src/app/services/sparql.service';
-import {SparqlResult} from 'src/app/interfaces/sparql'
+import { SparqlService } from 'src/app/services/sparql.service';
+import { SparqlResult } from 'src/app/interfaces/sparql';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sparql-view',
@@ -9,11 +10,11 @@ import {SparqlResult} from 'src/app/interfaces/sparql'
   styleUrls: ['./sparql-view.component.css']
 })
 export class SparqlViewComponent implements OnInit {
-  txtSparql:string;
+  txtSparql = new FormControl('PREFIX dbo:  <http://dbpedia.org/ontology/>\nPREFIX dbr:  <http://dbpedia.org/resource/>');
   public sparqlResult: SparqlResult;
-  private requestedResource: string;
+  requestedResource: string;
 
-  constructor(private route: ActivatedRoute, private router: Router,private sparqlService:SparqlService) {
+  constructor(private route: ActivatedRoute, private router: Router, private sparqlService: SparqlService) {
     route.url.subscribe(segments => {
       this.requestedResource = segments[0].path;
     });
@@ -23,8 +24,8 @@ export class SparqlViewComponent implements OnInit {
 
   }
 
-  generateSparql():void{
-    this.sparqlService.getResult(this.requestedResource,this.txtSparql).subscribe(data => {
+  generateSparql(): void{
+    this.sparqlService.getResult(this.requestedResource, this.txtSparql.value).subscribe(data => {
       this.sparqlResult = data;
     });
   }
