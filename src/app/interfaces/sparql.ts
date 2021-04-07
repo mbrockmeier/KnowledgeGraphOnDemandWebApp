@@ -1,3 +1,4 @@
-export interface SparqlResult{
-    result:string;
+export interface SparqlResult {
+    result: string;
+    duration: number;
 }

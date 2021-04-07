@@ -26,6 +26,7 @@
             </mat-form-field>
             <mat-checkbox [formControl]="forceModelRefresh">Force refresh model</mat-checkbox>
             <div class="actions-row">
+                <a routerLink="/sparql" class="lnk-sparql">Execute SPARQL</a>
                 <a routerLink="/settings" class="lnk-settings">Settings</a>
                 <button mat-raised-button color="primary" (click)="generateKnowledgeGraph()">Generate...</button>
             </div>
