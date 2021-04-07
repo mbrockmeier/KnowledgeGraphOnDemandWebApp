@@ -8,15 +8,25 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SparqlService {
-  private sparqlUrl = "http://localhost:4200/kgod/sparql/"
+  private sparqlUrl = 'http://localhost:4200/kgod/sparql';
 
   constructor(private http: HttpClient) { }
 
   getResult(requestedResource: string, txtSparql: string): Observable<SparqlResult> {
-    const requestUrl = this.sparqlUrl + requestedResource;
+    const requestUrl = this.sparqlUrl + '/' + requestedResource;
     const headers = new HttpHeaders().set('Accept', 'application/json');
     const body = new HttpParams().set('textarea', txtSparql);
     return this.http.post(requestUrl, body, {
+      headers
+    }).pipe(map((jsonResource: SparqlResult) => {
+      return jsonResource;
+    }));
+  }
+
+  executeQuery(txtSparql: string): Observable<SparqlResult> {
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const body = new HttpParams().set('query', txtSparql);
+    return this.http.post(this.sparqlUrl, body, {
       headers
     }).pipe(map((jsonResource: SparqlResult) => {
       return jsonResource;

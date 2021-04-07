@@ -1,4 +1,5 @@
 p {
     overflow: auto;
     height: 300px;
+    white-space: pre-line;
 }

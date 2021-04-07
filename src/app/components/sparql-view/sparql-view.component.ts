@@ -25,8 +25,14 @@ export class SparqlViewComponent implements OnInit {
   }
 
   generateSparql(): void{
-    this.sparqlService.getResult(this.requestedResource, this.txtSparql.value).subscribe(data => {
-      this.sparqlResult = data;
-    });
+    if (this.requestedResource) {
+      this.sparqlService.getResult(this.requestedResource, this.txtSparql.value).subscribe(data => {
+        this.sparqlResult = data;
+      });
+    } else {
+      this.sparqlService.executeQuery(this.txtSparql.value).subscribe(data => {
+        this.sparqlResult = data;
+      });
+    }
   }
 }
