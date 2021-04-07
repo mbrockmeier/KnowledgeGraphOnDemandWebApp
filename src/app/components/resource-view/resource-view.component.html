@@ -18,6 +18,9 @@
         <div class="extract" *ngIf="!viewingOntology">
             <h3>{{ rdfResource?.abstract }}</h3>
         </div>
+        <div>
+            <button mat-raised-button color="primary" (click) = "runSparql()">Sparql</button>
+        </div>
         <div class="table-content">
             <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="rdfResource">
                 <thead>

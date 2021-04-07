@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+}
+
+textarea{
+    text-align: left;
+    height: 400px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    display: block;
+    margin: auto;
+}

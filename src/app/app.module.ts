@@ -27,6 +27,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SettingComponent } from './components/setting/setting.component';
 import { WikipediaService } from './services/wikipedia.service';
 import { SettingService } from './services/setting.service';
+import { SparqlViewComponent } from './components/sparql-view/sparql-view.component';
+import { FormsModule } from '@angular/forms';
+import { SparqlService } from './services/sparql.service';
+import { SparqlResultsComponent } from './components/sparql-results/sparql-results.component';
+import {SparqlResultsService} from './services/sparql-results.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,8 @@ import { SettingService } from './services/setting.service';
     LoaderComponent,
     LandingComponent,
     SettingComponent,
+    SparqlViewComponent,
+    SparqlResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +60,10 @@ import { SettingService } from './services/setting.service';
     MatCheckboxModule,
     MatSelectModule,
     MatMenuModule,
-    OverlayModule
+    OverlayModule,
+    FormsModule
   ],
-  providers: [LoaderService, ResourceService, WikipediaService, SettingService,
+  providers: [LoaderService, ResourceService, WikipediaService, SettingService, SparqlResultsService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,
