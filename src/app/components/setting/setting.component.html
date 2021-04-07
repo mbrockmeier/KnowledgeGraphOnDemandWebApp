@@ -1,0 +1,36 @@
+<div class="settings-container">
+    <mat-card class="settings-card">
+        <mat-card-header>
+            <mat-card-title>Settings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="settings-content">
+            <mat-form-field>
+                <mat-label>Backlinks Limit - A high limit may lead to long runtimes for the extraction framework.</mat-label>
+                <input matInput placeholder="50" [formControl]="txtBacklinksCount">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Cache size - number of models stored in cache. A high cache size leads to higher memory consumption.</mat-label>
+                <input matInput placeholder="10" [formControl]="txtCacheSize">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Path to the dump folder of the DBpedia extraction framework</mat-label>
+                <input matInput placeholder="50" [formControl]="txtExtractionFrameworkFolder">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Path to the directory containing the wikidumps</mat-label>
+                <input matInput placeholder="50" [formControl]="txtWikiDumpFolder">
+            </mat-form-field>
+            <form [formGroup]="extractors">
+                <ul class="extractor-list">
+                    <li *ngFor="let extractor of availableExtractors">
+                        <mat-checkbox [formControlName]="extractor">{{ extractor }}</mat-checkbox>
+                    </li>
+                </ul>
+            </form>
+            <div class="actions-row">
+                <a routerLink="/" class="lnk-landing">Back</a>
+                <button mat-raised-button color="primary" (click)="save()">Save</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

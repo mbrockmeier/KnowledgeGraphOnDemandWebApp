@@ -15,9 +15,18 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Queried Wiki</mat-label>
-                <input matInput placeholder="Wikipedia" [formControl]="txtWiki">
+                <mat-select [formControl]="queriedWiki">
+                    <mat-option value="Wikipedia">Wikipedia</mat-option>
+                    <mat-option value="Custom Wiki">Custom Wiki</mat-option>
+                </mat-select>
             </mat-form-field>
+            <mat-form-field *ngIf="queriedWiki.value == 'Custom Wiki'">
+                <mat-label>Custom Wiki Url</mat-label>
+                <input matInput placeholder="https://missionimpossible.fandom.com/" [formControl]="txtCustomWikiUrl">
+            </mat-form-field>
+            <mat-checkbox [formControl]="forceModelRefresh">Force refresh model</mat-checkbox>
             <div class="actions-row">
+                <a routerLink="/settings" class="lnk-settings">Settings</a>
                 <button mat-raised-button color="primary" (click)="generateKnowledgeGraph()">Generate...</button>
             </div>
         </mat-card-content>

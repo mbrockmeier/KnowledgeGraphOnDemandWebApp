@@ -1,10 +1,25 @@
 <div class="resource-view-container">
-    <div>
-        <div class="heading">
-            <h1>About: {{ rdfResource.subject }}</h1>
+    <mat-toolbar class="toolbar" *ngIf="rdfResource">
+        <span>About: {{ rdfResource?.subject }}</span>
+        <span class="button-spacer"></span>
+        <button mat-icon-button routerLink="/"  aria-label="Home">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Download RDF model" [matMenuTriggerFor]="downloadMenu" *ngIf="!viewingOntology">
+            <mat-icon>download</mat-icon>
+        </button>
+        <mat-menu #downloadMenu="matMenu">
+            <button mat-menu-item (click)="downloadNTriples()">N-Triples</button>
+            <button mat-menu-item (click)="downloadTurtle()">Turtle</button>
+            <button mat-menu-item (click)="downloadXML()">XML</button>
+        </mat-menu>
+    </mat-toolbar>
+    <div style="width: 60%; margin: auto">
+        <div class="extract" *ngIf="!viewingOntology">
+            <h3>{{ rdfResource?.abstract }}</h3>
         </div>
         <div class="table-content">
-            <table border="1" *ngIf="rdfResource">
+            <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="rdfResource">
                 <thead>
                     <th>Property</th>
                     <th>Value</th>
@@ -12,13 +27,13 @@
                 <tbody>
                     <tr *ngFor="let groupedProperty of rdfResource?.groupedProperties">
                         <td class="col-predicate">
-                            <a [href]="groupedProperty.predicate">{{ groupedProperty.prefixedPredicate }}</a>
+                            <a [routerLink]="" (click)="navigate(groupedProperty.predicate)">{{ groupedProperty.prefixedPredicate }}</a>
                         </td>
                         <td class="col-objects">
                             <ul>
                                 <li *ngFor="let object of groupedProperty.objects">
                                     <span *ngIf="object.type == 'uri'">
-                                        <a [href]="object.uri">{{ object.prefixedUri }}</a>
+                                        <a [routerLink]="" (click)="navigate(object.uri)">{{ object.prefixedUri }}</a>
                                     </span>
                                     <span *ngIf="object.type == 'literal'">
                                         {{ object.value }} <ng-container *ngIf="object.datatype">({{ object.datatype }})</ng-container> <ng-container *ngIf="object.language">({{ object.language}})</ng-container>
@@ -46,6 +61,9 @@
                     </tr>
                 </tbody>
             </table>
+            <p *ngIf="rdfResource && !viewingOntology">
+                Model created in {{ rdfResource?.extractionTime }} seconds at {{ rdfResource?.cachedAt }} and stored in cache
+            </p>
         </div>
     </div>
 </div>

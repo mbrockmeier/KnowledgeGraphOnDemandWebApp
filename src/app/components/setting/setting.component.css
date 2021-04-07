@@ -1,14 +1,14 @@
 .actions-row {
     justify-content: flex-end;
-    align-items: center;
     display: flex;
+    align-items: center;
 }
 
-.landing-content {
+.settings-content {
     margin: 0 16px;
 }
 
-.landing-card {
+.settings-card {
     width: 700px;
 }
 
@@ -16,13 +16,17 @@ mat-form-field {
     width: 100%;
 }
 
-.landing-container {
+.settings-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.lnk-settings {
+.lnk-landing {
     margin-right: 15px;
+}
+
+ul.extractor-list {
+    list-style-type: none;
 }

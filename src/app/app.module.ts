@@ -18,14 +18,23 @@ import { LandingComponent } from './components/landing/landing.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SettingComponent } from './components/setting/setting.component';
+import { WikipediaService } from './services/wikipedia.service';
+import { SettingService } from './services/setting.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceViewComponent,
     LoaderComponent,
-    LandingComponent
+    LandingComponent,
+    SettingComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +48,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatMenuModule,
     OverlayModule
   ],
-  providers: [LoaderService, ResourceService,
+  providers: [LoaderService, ResourceService, WikipediaService, SettingService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,
