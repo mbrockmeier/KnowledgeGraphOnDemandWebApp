@@ -28,10 +28,14 @@ export class SparqlViewComponent implements OnInit {
     if (this.requestedResource) {
       this.sparqlService.getResult(this.requestedResource, this.txtSparql.value).subscribe(data => {
         this.sparqlResult = data;
+        console.log("here")
+        console.log(this.sparqlResult.columns[0][1])
       });
     } else {
       this.sparqlService.executeQuery(this.txtSparql.value).subscribe(data => {
         this.sparqlResult = data;
+        console.log("here")
+        console.log(this.sparqlResult.columns[0][1])
       });
     }
   }

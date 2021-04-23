@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoaderService } from './loader.service';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, debounceTime } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,9 @@ export class LoaderInterceptorService implements HttpInterceptor {
     }
 
     this.showLoader();
-    return next.handle(req).pipe(tap((event: HttpEvent<any>) => {
+    return next.handle(req).pipe(
+      debounceTime(1000),
+      tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
         this.onEnd();
       }

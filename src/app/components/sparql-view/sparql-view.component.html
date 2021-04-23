@@ -22,7 +22,7 @@
             </div>
         </mat-card-content>
         <app-sparql-results [sparqlResult]="sparqlResult" *ngIf="sparqlResult"></app-sparql-results>
-        <p>Query executed in {{ sparqlResult?.duration }} seconds</p>
+        <p *ngIf="sparqlResult?.duration">Query executed in {{ sparqlResult?.duration }} seconds</p>
     </mat-card>
 </div>
 

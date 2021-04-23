@@ -1,1 +1,13 @@
-<p>{{sparqlResult?.result}}</p>
+<div class="sparql-view-container">
+    <div class="table-content">
+        <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="sparqlResult">
+            <tbody>
+                <tr *ngFor="let columns of sparqlResult?.columns">
+                    <td *ngFor="let cell of columns">
+                        {{ cell }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
