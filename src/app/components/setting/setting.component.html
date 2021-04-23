@@ -4,8 +4,14 @@
             <mat-card-title>Settings</mat-card-title>
         </mat-card-header>
         <mat-card-content class="settings-content">
+            <p>
+                <mat-checkbox [formControl]="retrieveExtract">Extract abstract from wikipedia</mat-checkbox>
+            </p>
+            <p>
+                <mat-checkbox [formControl]="includeBacklinks">Include backlinks</mat-checkbox>
+            </p>
             <mat-form-field>
-                <mat-label>Backlinks Limit - A high limit may lead to long runtimes for the extraction framework.</mat-label>
+                <mat-label>Backlinks Limit - A high limit may lead to long runtimes for the extraction framework. Set 0 for unlimited.</mat-label>
                 <input matInput placeholder="50" [formControl]="txtBacklinksCount">
             </mat-form-field>
             <mat-form-field>
@@ -20,6 +26,11 @@
                 <mat-label>Path to the directory containing the wikidumps</mat-label>
                 <input matInput placeholder="50" [formControl]="txtWikiDumpFolder">
             </mat-form-field>
+            <mat-form-field>
+                <mat-label>Language code</mat-label>
+                <input matInput placeholder="50" [formControl]="txtLang">
+            </mat-form-field>
+            <span>Available extractors</span>
             <form [formGroup]="extractors">
                 <ul class="extractor-list">
                     <li *ngFor="let extractor of availableExtractors">

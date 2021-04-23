@@ -19,7 +19,7 @@
     </mat-toolbar>
     <div style="width: 60%; margin: auto">
         <div class="extract" *ngIf="!viewingOntology">
-            <h3>{{ rdfResource?.abstract }}</h3>
+            <h3 *ngIf="displayAbstract" >{{ rdfResource?.abstract }}</h3>
         </div>
         <div class="table-content">
             <table id='t01' style="width: 100%; word-wrap:break-word; white-space: wrap; float: center;" border="1" *ngIf="rdfResource">

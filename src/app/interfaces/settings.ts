@@ -6,4 +6,6 @@ export interface Settings {
     cacheSize: number;
     lang: string;
     extractors: string;
+    includeBacklinks: string;
+    retrieveExtract: string;
 }

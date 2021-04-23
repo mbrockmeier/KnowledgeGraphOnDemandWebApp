@@ -16,6 +16,7 @@ export class ResourceViewComponent implements OnInit {
   rdfResource: JSONResource;
   refreshModel = false;
   wikiBaseUrl: string;
+  displayAbstract: boolean;
 
   constructor(private route: ActivatedRoute, private resourceService: ResourceService, private router: Router,
               private downloadService: DownloadService) {
@@ -38,6 +39,11 @@ export class ResourceViewComponent implements OnInit {
     if (!this.viewingOntology) {
       this.resourceService.getResource(this.requestedResource, this.refreshModel, this.wikiBaseUrl).subscribe(data => {
         this.rdfResource = data;
+        if (this.rdfResource?.abstract?.length < 3000) {
+          this.displayAbstract = true;
+        } else {
+          this.displayAbstract = false;
+        }
       });
     } else {
       this.resourceService.getOntology(this.requestedResource).subscribe(data => {
