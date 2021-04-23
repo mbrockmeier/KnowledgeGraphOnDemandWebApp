@@ -1,4 +1,4 @@
 export interface SparqlResult {
-    result: string;
+    columns: string[][];
     duration: number;
 }
